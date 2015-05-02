@@ -2,237 +2,378 @@
 
 /* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
 html{
-    color:#333;
-    background:#fff;
-    -webkit-text-size-adjust:100%;
-    -ms-text-size-adjust:100%;
-    text-rendering:optimizelegibility;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: grayscale;
+  color:#333;
+  background:#fff;
+  -webkit-text-size-adjust:100%;
+  -ms-text-size-adjust:100%;
+  text-rendering:optimizelegibility;
+}
+
+/* 如果你的项目仅支持 IE9+ | Chrome | Firefox 等，推荐在 <html> 中添加 .borderbox 这个 class */
+html.borderbox *, html.borderbox *:before, html.borderbox *:after {
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  box-sizing:border-box;
+}
+
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, menu, nav, section{
+  margin:0;
+  padding:0;
+}
+
+/* 重设 HTML5 标签, IE 需要在 js 中 createElement(TAG) */
+article, aside, details, figcaption, figure, footer, header, menu, nav, section{
+  display:block;
+}
+
+/* HTML5 媒体文件跟 img 保持一致 */
+audio, canvas, video{
+  display:inline-block;
+  *display:inline;
+  *zoom:1;
 }
 
 /* 要注意表单元素并不继承父级 font 的问题 */
 body, button, input, select, textarea{
-    font:400 14px/1.8 Avenir, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+  font:400 1em/1.5 Avenir, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+}
+
+/* 去除 IE6 input/button 多余的空白 */
+button, input{
+  *width:auto;
+  *overflow:visible;
+
+  /* 让 input 和 button 一样高 */
+  line-height:normal;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner{
+  padding:0;
+  border:0;
+}
+
+/* 去掉各Table cell 的边距并让其边重合 */
+table{
+  border-collapse:collapse;
+  border-spacing:0;
+}
+
+/* IE bug fixed: th 不继承 text-align */
+th{
+  text-align:inherit;
+}
+
+/* 去除默认边框 */
+fieldset, img{
+  border:0;
+}
+
+/* 解决 IE6-7 图片缩放锯齿问题 */
+img{
+  -ms-interpolation-mode:bicubic;
+}
+
+/* ie6 7 8(q) bug 显示为行内表现 */
+iframe{
+  display:block;
 }
 
 /* 块/段落引用 */
 blockquote {
-    position:relative;
-    color: #999;
-    font-weight:300;
-    font-family:Avenir, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
-    border-left:1px solid #1abc9c;
-    padding-left:1em;
-    margin:1em 3em 1em 2em;
+  position:relative;
+  color: #999;
+  font-weight:300;
+  font-family:Avenir, 'Helvetica Neue', 'Microsoft Yahei', 'Hiragino Sans GB', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', sans-serif;
+  border-left:1px solid #1abc9c;
+  padding-left:1em;
+  margin:1em 3em 1em 0;
 }
 
 @media only screen and ( max-width:640px ){
-    blockquote{ margin:1em 0; }
+  blockquote{ margin:1em 0; }
 }
 
 /* Firefox 以外，元素没有下划线，需添加 */
 acronym, abbr{
-    border-bottom:1px dotted;
-    font-variant:normal;
+  border-bottom:1px dotted;
+  font-variant:normal;
 }
 
 /* 添加鼠标问号，进一步确保应用的语义是正确的（要知道，交互他们也有洁癖，如果你不去掉，那得多花点口舌） */
 abbr{
-    cursor:help;
+  cursor:help;
 }
 
 /* 一致的 del 样式 */
 del{
-    text-decoration:line-through;
+  text-decoration:line-through;
 }
 
 address, caption, cite, code, dfn, em, th, var{
-    font-style:normal;
-    font-weight:400;
+  font-style:normal;
+  font-weight:400;
 }
 
 /* 去掉列表前的标识, li 会继承，大部分网站通常用列表来很多内容，所以应该当去 */
 ul, ol{
-    list-style:none;
+  list-style:none;
 }
 
 /* 对齐是排版最重要的因素, 别让什么都居中 */
 caption, th{
-    text-align:left;
+  text-align:left;
 }
 
 q:before, q:after{
-    content:'';
+  content:'';
 }
 
 /* 统一上标和下标 */
 sub, sup{
-    font-size:75%;
-    line-height:0;
-    position:relative;
+  font-size:75%;
+  line-height:0;
+  position:relative;
 }
 
 :root sub, :root sup{
-    vertical-align:baseline; /* for ie9 and other modern browsers */
+  vertical-align:baseline; /* for ie9 and other modern browsers */
 }
 
 sup{
-    top:-0.5em;
+  top:-0.5em;
 }
 
 sub{
-    bottom:-0.25em;
+  bottom:-0.25em;
+}
+
+/* 让链接在 hover 状态下显示下划线 */
+a{ color:#1abc9c; }
+a:hover{ text-decoration:underline; }
+
+.typo a{ border-bottom:1px solid #1abc9c; }
+.typo a:hover{ border-bottom-color:#555; color:#555; text-decoration:none; }
+
+/* 默认不显示下划线，保持页面简洁 */
+ins, a{
+  text-decoration:none;
+}
+
+/* 专名号：虽然 u 已经重回 html5 Draft，但在所有浏览器中都是可以使用的，
+ * 要做到更好，向后兼容的话，添加 class="typo-u" 来显示专名号
+ * 关于 <u> 标签：http://www.whatwg.org/specs/web-apps/current-work/multipage/text-level-semantics.html#the-u-element
+ * 被放弃的是 4，之前一直搞错 http://www.w3.org/TR/html401/appendix/changes.html#idx-deprecated
+ * 一篇关于 <u> 标签的很好文章：http://html5doctor.com/u-element/ 
+ */
+u, .typo-u{
+  text-decoration:underline;
+}
+
+/* 标记，类似于手写的荧光笔的作用 */
+mark{
+  background:#fffdd1;
+  border-bottom:1px solid #ffedce;
+  padding:2px;margin:0 5px;
 }
 
 /* 代码片断 */
 pre, code, pre tt{
-    font-family:Courier, 'Courier New', monospace;
+  font-family:Courier, 'Courier New', monospace;
 }
 
 pre{
-    background:#f8f8f8;
-    border:1px solid #ddd;
-    padding:1em 1.5em;
-    display:block;
-    -webkit-overflow-scrolling: touch;
+  background:#f8f8f8;
+  border:1px solid #ddd;
+  padding:1em 1.5em;
+  display:block;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 一致化 horizontal rule */
+hr{
+  border:none;
+  border-bottom:1px solid #cfcfcf;
+  margin-bottom:10px;
+  height:10px;
+}
+
+/* 底部印刷体、版本等标记 */
+small, .typo-small,
+  /* 图片说明 */
+figcaption{
+  font-size:0.9em;
+  color:#888;
+}
+
+strong, b{font-weight:bold;color:#000;}
+
+/* 可拖动文件添加拖动手势 */
+[draggable]{
+  cursor:move;
+}
+
+.clearfix:before, .clearfix:after{
+  content:"";
+  display:table;
+}
+
+.clearfix:after{
+  clear:both;
+}
+
+.clearfix{
+  zoom:1;
+}
+
+/* 强制文本换行 */
+.textwrap, .textwrap td, .textwrap th{
+  word-wrap:break-word;
+  word-break:break-all;
+}
+
+.textwrap-table{
+  table-layout:fixed;
 }
 
 /* 提供 serif 版本的字体设置: iOS 下中文自动 fallback 到 sans-serif */
 .serif{ font-family:Palatino, Optima, Georgia, serif; }
 
+/* 保证块/段落之间的空白隔行 */
+.typo p, .typo pre, .typo ul, .typo ol, .typo dl, .typo form, .typo hr, .typo table,
+.typo-p, .typo-pre, .typo-ul, .typo-ol, .typo-dl, .typo-form, .typo-hr, .typo-table, blockquote{
+  margin-bottom:1.2em;
+}
 
 h1, h2, h3, h4, h5, h6{
-    font-family:'Helvetica Neue', Lantinghei SC, 'Microsoft Yahei', 'Hiragino Sans GB', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', sans-serif;
-    font-weight:200;
-    color:#000;
+  font-family:'Helvetica Neue', 'Microsoft Yahei', 'Hiragino Sans GB', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', sans-serif;
+  font-weight:200;
+  color:#000;
 }
 
-#bodycontent {}
-
-    /*#bodycontent p,*/
-    /*#bodycontent li {*/
-        /*font-family: sans-serif;*/
-    /*}*/
-
-    #bodycontent p {
-        font-size:   125%;
-        padding-left: 2.5em;
-    }
-
-    #bodycontent h3 {
-        padding-left: 2em;
-    }
-
-    #bodycontent ul {
-        margin-left: 2em;
-    }
-
-    #bodycontent ul li {
-        font-size: 125%;
-    }
-
-h1.sitetitle a {
-    border: 0;
-    text-decoration: none;
+/* 标题应该更贴紧内容，并与其他块区分，margin 值要相应做优化 */
+.typo h1, .typo h2, .typo h3, .typo h4, .typo h5, .typo h6,
+.typo-h1, .typo-h2, .typo-h3, .typo-h4, .typo-h5, .typo-h6{
+  margin-bottom:0.4em;
+  line-height:1.5;
 }
 
-ul.topics {
-    list-style-type: none;
+.typo h1, .typo-h1{
+  font-size:2em;
 }
 
-    .topic-header {
-        margin-top: 1em;
-    }
-
-table {
-    border: 1px solid black;
+.typo h2, .typo-h2{
+  font-size:1.8em;
 }
 
-    table tr:nth-child(odd) {
-        background-color: #ddd;
-    }
-
-#footerstrip {
-    background-color: #eae6e6;
-    text-align: center;
-    font-size: 0.9em;
-    color: #000;
-    padding-top: 2em;
-    padding-bottom: 2em;
+.typo h3, .typo-h3{
+  font-size:1.6em;
 }
 
-    #footerstrip a {
-        color: #000;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    #footerstrip a:hover {
-        color: #000;
-        font-weight: bold;
-    }
-
-#logostrip {
-    background-color: #376396;
-    color: #fff;
-    padding-top: 1.5em;
+.typo h4, .typo-h4{
+  font-size:1.4em;
 }
 
-    #logostrip h1,
-    #logostrip h4 {
-        color: #fff;
-        text-decoration: none;
-    }
-
-    #logostrip a {
-        color: #fff;
-        text-decoration: none;
-    }
-
-.sidebar {
-    padding-top: 1.5em;
-    padding-left: 0.5em;
+.typo h5, .typo h6, .typo-h5, .typo-h6{
+  font-size:1.2em;
 }
 
-pre {
-    background-color: #fff6bf;
-    border: 1px solid #ccc;
-    font-size: 13px;
-    line-height: 19px;
-    overflow: auto;
-    padding: 6px 10px;
-    border-radius: 3px;
-    margin-left: 3em;
+/* 在文章中，应该还原 ul 和 ol 的样式 */
+.typo ul, .typo-ul{
+  margin-left:1.3em;
+  list-style:disc;
 }
 
-.question {
-    font-weight: bold;
+.typo ol, .typo-ol{
+  list-style:decimal;
+  margin-left:1.9em;
 }
 
-.http_code,
-.http_method {
-    background-color: #fff6bf;
-    border-bottom: 1px dashed #aaa;
+.typo li ul, .typo li ol, .typo-ul ul, .typo-ul ol, .typo-ol ul, .typo-ol ol{
+  margin-top:0;
+  margin-bottom:0;
+  margin-left:2em;
 }
 
-a.http_code {
-    padding-right: 15px;
-    position: relative;
-    text-decoration: none;
+.typo li ul, .typo-ul ul, .typo-ol ul{
+  list-style:circle;
 }
 
-a.http_code:after {
-    position: absolute;
-    top: 2px;
-    right: 0;
-    content: " ";
-    width: 12px;
-    height: 12px;
-    background-repeat: no-repeat;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAACXBIWXMAAAsTAAALEwEAmpwYAAAKT2lDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjanVNnVFPpFj333vRCS4iAlEtvUhUIIFJCi4AUkSYqIQkQSoghodkVUcERRUUEG8igiAOOjoCMFVEsDIoK2AfkIaKOg6OIisr74Xuja9a89+bN/rXXPues852zzwfACAyWSDNRNYAMqUIeEeCDx8TG4eQuQIEKJHAAEAizZCFz/SMBAPh+PDwrIsAHvgABeNMLCADATZvAMByH/w/qQplcAYCEAcB0kThLCIAUAEB6jkKmAEBGAYCdmCZTAKAEAGDLY2LjAFAtAGAnf+bTAICd+Jl7AQBblCEVAaCRACATZYhEAGg7AKzPVopFAFgwABRmS8Q5ANgtADBJV2ZIALC3AMDOEAuyAAgMADBRiIUpAAR7AGDIIyN4AISZABRG8lc88SuuEOcqAAB4mbI8uSQ5RYFbCC1xB1dXLh4ozkkXKxQ2YQJhmkAuwnmZGTKBNA/g88wAAKCRFRHgg/P9eM4Ors7ONo62Dl8t6r8G/yJiYuP+5c+rcEAAAOF0ftH+LC+zGoA7BoBt/qIl7gRoXgugdfeLZrIPQLUAoOnaV/Nw+H48PEWhkLnZ2eXk5NhKxEJbYcpXff5nwl/AV/1s+X48/Pf14L7iJIEyXYFHBPjgwsz0TKUcz5IJhGLc5o9H/LcL//wd0yLESWK5WCoU41EScY5EmozzMqUiiUKSKcUl0v9k4t8s+wM+3zUAsGo+AXuRLahdYwP2SycQWHTA4vcAAPK7b8HUKAgDgGiD4c93/+8//UegJQCAZkmScQAAXkQkLlTKsz/HCAAARKCBKrBBG/TBGCzABhzBBdzBC/xgNoRCJMTCQhBCCmSAHHJgKayCQiiGzbAdKmAv1EAdNMBRaIaTcA4uwlW4Dj1wD/phCJ7BKLyBCQRByAgTYSHaiAFiilgjjggXmYX4IcFIBBKLJCDJiBRRIkuRNUgxUopUIFVIHfI9cgI5h1xGupE7yAAygvyGvEcxlIGyUT3UDLVDuag3GoRGogvQZHQxmo8WoJvQcrQaPYw2oefQq2gP2o8+Q8cwwOgYBzPEbDAuxsNCsTgsCZNjy7EirAyrxhqwVqwDu4n1Y8+xdwQSgUXACTYEd0IgYR5BSFhMWE7YSKggHCQ0EdoJNwkDhFHCJyKTqEu0JroR+cQYYjIxh1hILCPWEo8TLxB7iEPENyQSiUMyJ7mQAkmxpFTSEtJG0m5SI+ksqZs0SBojk8naZGuyBzmULCAryIXkneTD5DPkG+Qh8lsKnWJAcaT4U+IoUspqShnlEOU05QZlmDJBVaOaUt2ooVQRNY9aQq2htlKvUYeoEzR1mjnNgxZJS6WtopXTGmgXaPdpr+h0uhHdlR5Ol9BX0svpR+iX6AP0dwwNhhWDx4hnKBmbGAcYZxl3GK+YTKYZ04sZx1QwNzHrmOeZD5lvVVgqtip8FZHKCpVKlSaVGyovVKmqpqreqgtV81XLVI+pXlN9rkZVM1PjqQnUlqtVqp1Q61MbU2epO6iHqmeob1Q/pH5Z/YkGWcNMw09DpFGgsV/jvMYgC2MZs3gsIWsNq4Z1gTXEJrHN2Xx2KruY/R27iz2qqaE5QzNKM1ezUvOUZj8H45hx+Jx0TgnnKKeX836K3hTvKeIpG6Y0TLkxZVxrqpaXllirSKtRq0frvTau7aedpr1Fu1n7gQ5Bx0onXCdHZ4/OBZ3nU9lT3acKpxZNPTr1ri6qa6UbobtEd79up+6Ynr5egJ5Mb6feeb3n+hx9L/1U/W36p/VHDFgGswwkBtsMzhg8xTVxbzwdL8fb8VFDXcNAQ6VhlWGX4YSRudE8o9VGjUYPjGnGXOMk423GbcajJgYmISZLTepN7ppSTbmmKaY7TDtMx83MzaLN1pk1mz0x1zLnm+eb15vft2BaeFostqi2uGVJsuRaplnutrxuhVo5WaVYVVpds0atna0l1rutu6cRp7lOk06rntZnw7Dxtsm2qbcZsOXYBtuutm22fWFnYhdnt8Wuw+6TvZN9un2N/T0HDYfZDqsdWh1+c7RyFDpWOt6azpzuP33F9JbpL2dYzxDP2DPjthPLKcRpnVOb00dnF2e5c4PziIuJS4LLLpc+Lpsbxt3IveRKdPVxXeF60vWdm7Obwu2o26/uNu5p7ofcn8w0nymeWTNz0MPIQ+BR5dE/C5+VMGvfrH5PQ0+BZ7XnIy9jL5FXrdewt6V3qvdh7xc+9j5yn+M+4zw33jLeWV/MN8C3yLfLT8Nvnl+F30N/I/9k/3r/0QCngCUBZwOJgUGBWwL7+Hp8Ib+OPzrbZfay2e1BjKC5QRVBj4KtguXBrSFoyOyQrSH355jOkc5pDoVQfujW0Adh5mGLw34MJ4WHhVeGP45wiFga0TGXNXfR3ENz30T6RJZE3ptnMU85ry1KNSo+qi5qPNo3ujS6P8YuZlnM1VidWElsSxw5LiquNm5svt/87fOH4p3iC+N7F5gvyF1weaHOwvSFpxapLhIsOpZATIhOOJTwQRAqqBaMJfITdyWOCnnCHcJnIi/RNtGI2ENcKh5O8kgqTXqS7JG8NXkkxTOlLOW5hCepkLxMDUzdmzqeFpp2IG0yPTq9MYOSkZBxQqohTZO2Z+pn5mZ2y6xlhbL+xW6Lty8elQfJa7OQrAVZLQq2QqboVFoo1yoHsmdlV2a/zYnKOZarnivN7cyzytuQN5zvn//tEsIS4ZK2pYZLVy0dWOa9rGo5sjxxedsK4xUFK4ZWBqw8uIq2Km3VT6vtV5eufr0mek1rgV7ByoLBtQFr6wtVCuWFfevc1+1dT1gvWd+1YfqGnRs+FYmKrhTbF5cVf9go3HjlG4dvyr+Z3JS0qavEuWTPZtJm6ebeLZ5bDpaql+aXDm4N2dq0Dd9WtO319kXbL5fNKNu7g7ZDuaO/PLi8ZafJzs07P1SkVPRU+lQ27tLdtWHX+G7R7ht7vPY07NXbW7z3/T7JvttVAVVN1WbVZftJ+7P3P66Jqun4lvttXa1ObXHtxwPSA/0HIw6217nU1R3SPVRSj9Yr60cOxx++/p3vdy0NNg1VjZzG4iNwRHnk6fcJ3/ceDTradox7rOEH0x92HWcdL2pCmvKaRptTmvtbYlu6T8w+0dbq3nr8R9sfD5w0PFl5SvNUyWna6YLTk2fyz4ydlZ19fi753GDborZ752PO32oPb++6EHTh0kX/i+c7vDvOXPK4dPKy2+UTV7hXmq86X23qdOo8/pPTT8e7nLuarrlca7nuer21e2b36RueN87d9L158Rb/1tWeOT3dvfN6b/fF9/XfFt1+cif9zsu72Xcn7q28T7xf9EDtQdlD3YfVP1v+3Njv3H9qwHeg89HcR/cGhYPP/pH1jw9DBY+Zj8uGDYbrnjg+OTniP3L96fynQ89kzyaeF/6i/suuFxYvfvjV69fO0ZjRoZfyl5O/bXyl/erA6xmv28bCxh6+yXgzMV70VvvtwXfcdx3vo98PT+R8IH8o/2j5sfVT0Kf7kxmTk/8EA5jz/GMzLdsAAAAgY0hSTQAAeiUAAICDAAD5/wAAgOkAAHUwAADqYAAAOpgAABdvkl/FRgAAAHtJREFUeNqUkLENgBEQhW8oC5jCBDZQGUCjU1lAozCEHczz/uLPiciReMmn8b7cQQDohf/Yol2DhCiYkOFTwZ6jwBNMyGdB2YgV7RpqH3dhveBy7WNOEoW9zI/1qchC7QM+lVlWNoI/gohIXInLAKbAEYU1V+GEKLzwDQBJBGjnSdxFKAAAAABJRU5ErkJggg==);
+/* 同 ul/ol，在文章中应用 table 基本格式 */
+.typo table th, .typo table td, .typo-table th, .typo-table td, .typo table caption{
+  border:1px solid #ddd;
+  padding:0.5em 1em;
+  color:#666;
 }
 
-.http_method {
-    text-transform: uppercase;
+.typo table th, .typo-table th{
+  background:#fbfbfb;
 }
+
+.typo table thead th, .typo-table thead th{
+  background:#f1f1f1;
+}
+
+.typo table caption{
+  border-bottom:none;
+}
+
+/* 去除 webkit 中 input 和 textarea 的默认样式  */
+.typo-input, .typo-textarea{
+  -webkit-appearance:none;
+  border-radius:0;
+}
+
+/* 高亮选中 */
+::-moz-selection{
+  background:#08c;
+  color:#fff;
+}
+
+::selection{
+  background:#08c;
+  color:#fff;
+}
+
+.typo-em, .typo em, legend, caption{
+  color:#000;
+  font-weight:inherit;
+}
+
+/* 着重号，只能在少量（少于100个字符）且全是全角字符的情况下使用 */
+.typo-em {
+  position: relative;
+}
+.typo-em:after {
+  position: absolute;
+  top: 0.65em;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  content: "・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・";
+}
+
+/* Responsive images */
+.typo img{ max-width: 100%; }
+
+body{padding:30px 50px;}
+
+#header{border-bottom:1px solid #ccc;margin-bottom:30px;}
+#header > h4, #header > h1{display:inline-block;margin-right:20px;}
+
+#side, #content{float:left;}
+#side{width:400px;padding-right:30px;font-size:14px;}
+#side li {list-style:inside decimal;margin-left:1.3em;}
+#side ul {margin-bottom:1.2em;}
+#side > h4 {font-size:22px;}
+#side > h4:before{color:#08c;}
+
+#content{width:600px;}
+#recipe{border:none;}
+#recipe a{text-decoration:none;}
+
+.question{font-size:24px;}
+
+#footer{clear:both;width:100%;display:block;margin-top:50px;border-top:1px dotted #eee;padding:30px 0 50px;position:relative;top:50px;}
+#fork{position:fixed;right:0;top:0;}

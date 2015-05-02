@@ -3,25 +3,13 @@ layout: default
 ---
 
 {{ content }}
-
-<div style='margin: 3em'>
-    <span class='st_facebook_hcount' title='Facebook'></span>
-    <span class='st_twitter_hcount' title='Tweet'></span>
-    <span class='st_linkedin_hcount' title='LinkedIn'></span>
-    <span class='st_googleplus_hcount' title='Google +'></span>
-    <span class='st_email_hcount' title='Email'></span>
-    <br>
-    <br>
-    <hr>
-    <div style='float:right'>
-        <address>This recipe has been written by
-        {% if page.author_email %}
-            <a href="mailto://{{ page.author_email }}">{{ page.author }}</a>.
-        {% else %}
-            {{ page.author }}.
-        {% endif %}
-        </address>
-    </div>
-    <br>
-</div>
+  
+<small id="recipe" class="serif">
+By 
+{% if page.author_email %}
+  <a href="mailto://{{ page.author_email }}">{{ page.author }}</a>
+{% else %}
+  {{ page.author }}
+{% endif %}
+</small>
 
