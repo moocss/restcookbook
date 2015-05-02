@@ -5,3 +5,4 @@ highlighter: pygments
 title: Rest 手册
 
 production_url: http://sofish.github.io/restcookbook/
+BASE_PATH : /restcookbook/
