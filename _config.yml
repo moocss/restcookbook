@@ -4,4 +4,4 @@ highlighter: pygments
 
 title: Rest 手册
 
-BASE_PATH : /restcookbook/
+baseurl: /restcookbook
