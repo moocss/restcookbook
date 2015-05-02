@@ -2,6 +2,6 @@ permalink: /:categories/:title/
 exclude: README.md
 highlighter: pygments
 
-title : Rest 手册
+title: Rest 手册
 
-production_url : http://sofish.github.io/restcookbook/
+production_url: http://sofish.github.io/restcookbook/
